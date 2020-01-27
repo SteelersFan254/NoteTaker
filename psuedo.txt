@@ -1,0 +1,13 @@
+click save button
+    handlenotesave
+        takes input of title and note and runs saveNote()
+            posts its to "api/notes"
+        then takes it and runs getandrendernotes()
+            returns getnotes()
+                gets from "api/notes"
+            then rendernotelist(data)
+                empties $notelist
+                then appends notelist with notelistitems
+        and renderactivenotes
+            hides save button
+            if activenote.id
