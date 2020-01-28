@@ -21,8 +21,7 @@ app.get("/notes", function (req, res) {
 
 app.get("/api/notes", function (req, res) {
     var notes = fs.readFileSync(path.join(__dirname, "./db/db.json"));
-    res.send(notes)
-    console.log(notes)
+    return res.send(JSON.parse(notes));
 });
 
 app.post("/api/notes", function (req, res) {
