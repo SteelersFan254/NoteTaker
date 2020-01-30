@@ -29,11 +29,37 @@ app.post("/api/notes", function (req, res) {
     fs.readFile(path.join(__dirname, "/db/db.json"), function(err, data) {
         var parseData = JSON.parse(data);
         parseData.push(saveNote);
+        for (i = 0; i < parseData.length; i++) {
+            parseData[i].id = i;
+        }
         fs.writeFile(path.join(__dirname, "/db/db.json"), JSON.stringify(parseData), "UTF8", (error) =>{
             if (error) throw error;
         });
     });
-    return res.send(saveNote)
+    return res.send(req.body.data)
+});
+
+app.delete("/api/notes/:id", function (req, res) {
+    
+    var chosenNote =req.params.id;
+
+    fs.readFile(path.join(__dirname, "/db/db.json"), function(err, data) {
+        var parseData = JSON.parse(data);
+        
+        for (i = 0; i < parseData.length; i++){
+            if (chosenNote === parseData[i]) {
+                parseData.splice(i, 1);
+                return parseData;
+            }
+        };
+        for (i = 0; i < parseData.length; i++){
+            parseData[i].id = i;
+        };
+        fs.writeFile(path.join(__dirname, "/db/db.json"), JSON.stringify(parseData), "UTF8", (error) =>{
+            if (error) throw error;
+        });
+        console.log(parseData);
+    });
 });
 
 
