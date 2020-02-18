@@ -8,3 +8,7 @@ This is a note-taking application. Users can write a new note by clicking the pe
 * js
 * css
 * html
+
+## Example
+
+![Example](./example.png) 
