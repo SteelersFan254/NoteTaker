@@ -49,7 +49,6 @@ app.delete("/api/notes/:id", function (req, res) {
         for (i = 0; i < parseData.length; i++){
             if (chosenNote === parseData[i]) {
                 parseData.splice(i, 1);
-                return parseData;
             }
         };
         for (i = 0; i < parseData.length; i++){
